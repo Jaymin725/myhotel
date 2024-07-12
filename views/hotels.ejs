@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head"); -%>
+  <body>
+    <header>
+      <h1>MyHotel</h1>
+      <nav>
+        <ul>
+          <li><a href="/auth/logout">Log Out</a></li>
+        </ul>
+      </nav>
+      <hr />
+    </header>
+    <main>
+      <h2>Hotels</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rooms</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% hotels.forEach(({ _id: hotelId, name, rooms }) => { %>
+          <tr>
+            <td><%= name %></td>
+            <td><%= rooms %></td>
+            <td>
+              <a href="/api/users/<%= userId %>/book/<%= hotelId %>">Book</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>

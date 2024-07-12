@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head"); -%>
+  <body>
+    <header>
+      <h1>MyHotel</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/auth/logout">Log Out</a></li>
+        </ul>
+      </nav>
+      <hr />
+    </header>
+    <main>
+      <h2>Profile</h2>
+      <p>Hello, <%= user.username %></p>
+      <section>
+        <h3>My Hotels</h3>
+        <a href="/add-hotel">Add New Hotel</a>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Rooms</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% hotels.forEach(({ _id: hotelId, name, rooms }) => { %>
+            <tr>
+              <td><%= name %></td>
+              <td><%= rooms %></td>
+              <td><a href="/api/hotels/<%= hotelId %>/delete">Remove</a></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>My Bookings</h3>
+        <a href="/api/hotels">Book A Room</a>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% bookings.forEach(({ _id: bookingId, hotel }) => { %>
+            <tr>
+              <td><%= hotel.name %></td>
+              <td>
+                <a href="/api/bookings/<%= bookingId %>/delete">Remove</a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head"); -%>
+  <body>
+    <header>
+      <h1>MyHotel</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/auth/logout">Log Out</a></li>
+        </ul>
+      </nav>
+      <hr />
+    </header>
+    <main>
+      <h2>New Hotel</h2>
+      <form action="/api/hotels" method="post">
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div>
+          <label for="rooms">Number of Rooms:</label>
+          <input type="number" name="rooms" id="rooms" />
+        </div>
+        <button type="submit">Add Hotel</button>
+      </form>
+    </main>
+  </body>
+</html>
